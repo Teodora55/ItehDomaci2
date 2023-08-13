@@ -18,4 +18,11 @@ class Film extends Model
         return $this->belongsTo(User::class);
     }
 
+    protected $fillable = [
+        'naziv',
+        'opis',
+        'zanr',
+        'reziser_id'
+    ];
+
 }

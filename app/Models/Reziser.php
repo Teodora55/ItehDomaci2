@@ -12,4 +12,9 @@ class Reziser extends Model
     public function films(){
         return $this->hasMany(Film::class);
     }
+
+    protected $fillable = [
+        'ime',
+        'prezime'
+    ];
 }
