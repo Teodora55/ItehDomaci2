@@ -15,16 +15,20 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         \App\Models\User::truncate();
-        \App\Models\Reziser::truncate();
+        \App\Models\Glumac::truncate();
         \App\Models\Film::truncate();
+        \App\Models\Uloga::truncate();
 
          \App\Models\User::factory(5)->create();
 
          $f = new FilmsSeeder();
          $f->run();
 
-         $r = new ReziserSeeder();
-         $r->run();
+         $g = new GlumacSeeder();
+         $g->run();
+
+         $u = new UlogaSeeder();
+         $u->run();
 
     }
 }

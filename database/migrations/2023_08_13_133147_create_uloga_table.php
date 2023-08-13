@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('films', function (Blueprint $table) {
+        Schema::create('uloga', function (Blueprint $table) {
             $table->id();
             $table->string('naziv');
-            $table->string('opis');
-            $table->string('zanr');
+            $table->foreignId('glumac_id');
+            $table->foreignId('film_id');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('films');
+        Schema::dropIfExists('uloga');
     }
 };

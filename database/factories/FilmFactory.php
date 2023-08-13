@@ -21,7 +21,6 @@ class FilmFactory extends Factory
             'naziv' => $this->faker->sentence,
             'opis' => $this->faker->paragraph,
             'zanr' => $this->faker->word,
-            'reziser_id' => Reziser::find(random_int(1,Reziser::count()))
         ];
     }
 }

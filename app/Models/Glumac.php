@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Reziser extends Model
+class Glumac extends Model
 {
     use HasFactory;
 
-    public function films(){
-        return $this->hasMany(Film::class);
+    public function uloga(){
+        return $this->hasMany(Uloga::class);
     }
 
     protected $fillable = [

@@ -5,22 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Film extends Model
+class Uloga extends Model
 {
     use HasFactory;
 
-    public function uloga(){
-        return $this->hasMany(Uloga::class);
+    public function glumac(){
+        return $this->belongsTo(Glumac::class);
     }
 
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function film(){
+        return $this->belongsTo(Film::class);
     }
 
     protected $fillable = [
         'naziv',
-        'opis',
-        'zanr'
+        'glumac_id',
+        'film_id'
     ];
 
 }

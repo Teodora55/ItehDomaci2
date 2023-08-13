@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Reziser;
+use App\Models\Uloga;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ReziserSeeder extends Seeder
+class UlogaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class ReziserSeeder extends Seeder
      */
     public function run()
     {
-        Reziser::factory(10)->create();
+        Uloga::factory(10)->create();
     }
 }
