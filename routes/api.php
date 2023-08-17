@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,13 +15,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/register', [AuthController::class,'register']);
+Route::post('/login', [AuthController::class,'login']);
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/profiles',function(Request $request){
+        return auth()->user();
+    });
+    
+    Route::resource('/uloga',App\Http\Controllers\UlogaController::class)->only(['update','store','delete']);
 });
 
+Route::get('/glumac', [App\Http\Controllers\GlumacController::class,'index']);
+Route::get('/glumac/{id}', [App\Http\Controllers\GlumacController::class,'show']);
 
-//Route::get('/reziser', [App\Http\Controllers\ReziserController::class,'index']);
+Route::get('/film', [App\Http\Controllers\FilmController::class,'index']);
+Route::get('/film/{id}', [App\Http\Controllers\FilmController::class,'show']);
 
-//Route::get('/reziser/{id}', [App\Http\Controllers\ReziserController::class,'show']);
-
-Route::resource('/reziser', App\Http\Controllers\ReziserController::class);
+Route::get('/uloga', [App\Http\Controllers\UlogaController::class,'index']);
+Route::get('/uloga/{id}', [App\Http\Controllers\UlogaController::class,'show']);

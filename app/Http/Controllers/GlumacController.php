@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\FilmResource;
-use App\Models\Film;
+use App\Http\Resources\GlumacResource;
+use App\Models\Glumac;
 use Illuminate\Http\Request;
 
-class FilmController extends Controller
+class GlumacController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class FilmController extends Controller
      */
     public function index()
     {
-        $films = Film::all();
-        return FilmResource::collection($films);
+        $glumci = Glumac::all();
+        return GlumacResource::collection($glumci);
     }
 
     /**
@@ -43,25 +43,25 @@ class FilmController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Film  $film
+     * @param  \App\Models\Glumac  $glumac
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $f = Film::find($id);
-        if ($f) {
-            return new FilmResource($f);
+        $g = Glumac::find($id);
+        if ($g) {
+            return new GlumacResource($g);
         }
-        return response()->json('Trazeni film ne postoji u bazi');
+        return response()->json('Trazeni glumac ne postoji u bazi');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Film  $film
+     * @param  \App\Models\Glumac  $glumac
      * @return \Illuminate\Http\Response
      */
-    public function edit(Film $film)
+    public function edit(Glumac $glumac)
     {
         //
     }
@@ -70,10 +70,10 @@ class FilmController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Film  $film
+     * @param  \App\Models\Glumac  $glumac
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Film $film)
+    public function update(Request $request, Glumac $glumac)
     {
         //
     }
@@ -81,16 +81,16 @@ class FilmController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Film  $film
+     * @param  \App\Models\Glumac  $glumac
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $f = Film::find($id);
-        if ($f) {
-            $f->delete();
-            return response()->json('Film je uspesno obrisan',new FilmResource($f));
+        $g = Glumac::find($id);
+        if ($g) {
+            $g->delete();
+            return response()->json('Glumac je uspesno obrisan',new GlumacResource($g));
         }
-        return response()->json('Trazeni film ne postoji u bazi');
+        return response()->json('Trazeni glumac ne postoji u bazi');
     }
 }
