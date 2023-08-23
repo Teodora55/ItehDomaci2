@@ -13,12 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('glumacs', function (Blueprint $table) {
-            $table->id();
-            $table->string('ime');
-            $table->string('prezime');
-            $table->timestamps();
-        });
+        Schema::dropIfExists('rezisers');
     }
 
     /**
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('glumacs');
+        //
     }
 };

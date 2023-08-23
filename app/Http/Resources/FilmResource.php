@@ -17,7 +17,7 @@ class FilmResource extends JsonResource
     {
         return [
             'naziv' => $this->resource->naziv,
-            'zanr' => $this->resource->zanr
+            'zanr_filma' => $this->resource->zanr_filma
         ];
     }
 }

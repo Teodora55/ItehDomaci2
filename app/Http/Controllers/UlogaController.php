@@ -53,7 +53,7 @@ class UlogaController extends Controller
         return response()->json('Trazena uloga ne postoji u bazi');
     }
 
-    public function update($request, $id)
+    public function update(Request $request, $id)
     {
         $validator = Validator::make(
             $request->all(),
@@ -63,6 +63,10 @@ class UlogaController extends Controller
                 'glumac_id'=>'',
             ]
         );
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors());
+        }
 
         $u = Uloga::find($id);
 
@@ -83,7 +87,10 @@ class UlogaController extends Controller
         $u = Uloga::find($id);
         if ($u) {
             $u->delete();
-            return response()->json('Uloga je uspesno obrisana',new UlogaResource($u));
+            return response()->json([
+                'message' => 'Uloga je uspesno obrisana',
+                'data' => new UlogaResource($u)
+            ]);
         }
         return response()->json('Trazena uloga ne postoji u bazi');
     }

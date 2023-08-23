@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Reziser;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,7 +21,8 @@ class FilmFactory extends Factory
         return [
             'naziv' => $this->faker->sentence,
             'opis' => $this->faker->paragraph,
-            'zanr' => $this->faker->word,
+            'zanr_filma' => $this->faker->word,
+            'user_id' => User::find(random_int(1,User::count())),
         ];
     }
 }
